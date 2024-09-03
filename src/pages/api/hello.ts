@@ -5,9 +5,6 @@ type Data = {
   name: string;
 };
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>,
-) {
-  res.status(200).json({ name: "John Doe" });
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+  return res.redirect(`${process.env.CLERK_BASE_URL}/sign-in?redirect_url=${process.env.CLERK_REDIRECT_URL}`);
 }
